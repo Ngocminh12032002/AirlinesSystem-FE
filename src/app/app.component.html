@@ -1,0 +1,23 @@
+<div id="container">
+  <!-- Navbar -->
+  <nav class="navbar bg-body-tertiary">
+    <form class="container-fluid justify-content-start">
+      <a href="/home" class="btn btn-outline-success me-2" type="button" >Home</a>
+      <a href="/flight" class="btn btn-sm btn-outline-secondary"  type="button">Booking</a>
+      <a *ngIf="isAuth$ ; else showLogin" href="/profile" type="button" class="btn btn-sm btn-outline">Profile</a>
+      <a *ngIf="role == 'Admin'" href="/admin" type="button" class="btn btn-sm btn-outline">Admin</a>
+
+      <button *ngIf="isAuth$ " (click)="logout()" type="button" class="btn btn-sm danger btn-outline">Logout</button>
+
+      <ng-template #showLogin>
+        <a href="/auth" type="button" class="btn btn-sm btn-outline">Login</a>
+      </ng-template>
+      
+    </form>
+  </nav>
+
+  <!-- Router Outlet -->
+  <router-outlet></router-outlet>
+
+  <!-- Footer -->
+</div>
